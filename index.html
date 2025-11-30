@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Smart Task Analyzer</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <h1>Smart Task Analyzer</h1>
+            <p class="subtitle">only implementation — scores & prioritizes tasks in your browser</p>
+        </header>
+
+        <main class="layout">
+            <section class="panel input-panel">
+                <h2>Input Tasks</h2>
+
+                <form id="taskForm" class="task-form">
+                    <div class="form-row">
+                        <input type="text" id="title" placeholder="Title (eg. Fix login bug)" />
+                        <input type="date" id="due_date" />
+                    </div>
+
+                    <div class="form-row">
+                        <input type="number" id="estimated_hours" placeholder="Estimated hours (number)" min="0" />
+                        <input type="number" id="importance" placeholder="Importance (1-10)" min="1" max="10" />
+                    </div>
+
+                    <div class="form-row">
+                        <input type="text" id="dependencies" placeholder="Dependencies (comma-separated IDs or titles)" />
+                        <label class="checkbox">
+                            <input type="checkbox" id="done" /> Done
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <button id="addTaskBtn" type="button">Add Task</button>
+                        <button id="clearFormBtn" type="button">Clear</button>
+                    </div>
+                </form>
+
+                <div>
+                    <h3>Or paste JSON array </h3>
+                    <textarea id="jsonInput" placeholder='[{"id":1,"title":"A","due_date":"2025-11-30","estimated_hours":3,"importance":8,"dependencies":[]}]'></textarea>
+                </div>
+
+                <div class="controls">
+                    <label for="strategy">Sorting strategy:</label>
+                    <select id="strategy">
+                        <option value="smart" selected>Smart Balance</option>
+                        <option value="fastest">Fastest Wins</option>
+                        <option value="impact">High Impact</option>
+                        <option value="deadline">Deadline Driven</option>
+                    </select>
+
+                    <button id="analyzeBtn">Analyze Tasks</button>
+                    <button id="suggestBtn">Suggest Top 3</button>
+                    <button id="downloadBtn">Download JSON</button>
+                </div>
+
+                <div id="messages" class="messages" aria-live="polite"></div>
+
+                <h3>Current Tasks</h3>
+                <div id="taskList" class="task-list empty">No tasks yet. Add tasks or paste JSON above.</div>
+            </section>
+
+            <section class="panel result-panel">
+                <h2>Results</h2>
+                <div id="resultMeta" class="result-meta"></div>
+                <div id="results" class="results"></div>
+            </section>
+        </main>
+
+        <footer>
+            <small>Local frontend only — no server. Use <code>tests.html</code> to run small unit checks.</small>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+<div>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Smart Task Analyzer (Frontend Only)</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <div class="app">
+        <header>
+            <h1>Smart Task Analyzer</h1>
+            <p class="subtitle">Frontend-only implementation — scores & prioritizes tasks in your browser</p>
+        </header>
+
+        <main class="layout">
+            <section class="panel input-panel">
+                <h2>Input Tasks</h2>
+
+                <form id="taskForm" class="task-form">
+                    <div class="form-row">
+                        <input type="text" id="title" placeholder="Title (eg. Fix login bug)" />
+                        <input type="date" id="due_date" />
+                    </div>
+
+                    <div class="form-row">
+                        <input type="number" id="estimated_hours" placeholder="Estimated hours (number)" min="0" />
+                        <input type="number" id="importance" placeholder="Importance (1-10)" min="1" max="10" />
+                    </div>
+
+                    <div class="form-row">
+                        <input type="text" id="dependencies" placeholder="Dependencies (comma-separated IDs or titles)" />
+                        <label class="checkbox">
+                            <input type="checkbox" id="done" /> Done
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <button id="addTaskBtn" type="button">Add Task</button>
+                        <button id="clearFormBtn" type="button">Clear</button>
+                    </div>
+                </form>
+
+                <div>
+                    <h3>Or paste JSON array (bulk)</h3>
+                    <textarea id="jsonInput" placeholder='[{"id":1,"title":"A","due_date":"2025-11-30","estimated_hours":3,"importance":8,"dependencies":[]}]'></textarea>
+                </div>
+
+                <div class="controls">
+                    <label for="strategy">Sorting strategy:</label>
+                    <select id="strategy">
+                        <option value="smart" selected>Smart Balance</option>
+                        <option value="fastest">Fastest Wins</option>
+                        <option value="impact">High Impact</option>
+                        <option value="deadline">Deadline Driven</option>
+                    </select>
+
+                    <button id="analyzeBtn">Analyze Tasks</button>
+                    <button id="suggestBtn">Suggest Top 3</button>
+                    <button id="downloadBtn">Download JSON</button>
+                </div>
+
+                <div id="messages" class="messages" aria-live="polite"></div>
+
+                <h3>Current Tasks</h3>
+                <div id="taskList" class="task-list empty">No tasks yet. Add tasks or paste JSON above.</div>
+            </section>
+
+            <section class="panel result-panel">
+                <h2>Results</h2>
+                <div id="resultMeta" class="result-meta"></div>
+                <div id="results" class="results"></div>
+            </section>
+        </main>
+
+        <footer>
+            <small>Local frontend only — no server. Use <code>tests.html</code> to run small unit checks.</small>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</div>
+</body>
+
+</html>
